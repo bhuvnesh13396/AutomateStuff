@@ -30,8 +30,24 @@ def replace_trigger():
         print("All Trigger Files Replaced Successfully")
 
 
+def replace_apex_page():
+    for root,dirs,files in os.walk('Dev/pages/'):
+        for fileName in files:
+            if fileName.endswith('.page'):
+                print("Replacing Apex Page File ::::::: "+fileName)
+                try:
+                    copyfile('C:/Users/bmaheshwari/Desktop/source/tdc_erhverv_cpq_dev_r1/src/pages/'+fileName,'C:/Users/bmaheshwari/Documents/Deployment/Dev/pages/'+fileName);
+                except IOError as e:
+                    print("Unable to copyfile Apex Page file ::: %s" %e)
+                    
+
+        print("All Apex Page Files Replaced Successfully")
+
+
 if __name__ == '__main__':
     replace_class()
    
     replace_trigger()
+
+    replace_apex_page()
 
